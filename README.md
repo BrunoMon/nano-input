@@ -1,9 +1,9 @@
 
 # @BrunoMon/nano-input
 
-![npm](https://img.shields.io/npm/v/@brunomon/odata-fetch-factory?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/BrunoMon/odata-fetch-factory)
-![GitHub](https://img.shields.io/github/license/brunomon/odata-fetch-factory)
+![npm](https://img.shields.io/npm/v/@brunomon/nano-input)
+![GitHub issues](https://img.shields.io/github/issues/brunomon/nano-input)
+![GitHub](https://img.shields.io/npm/l/@brunomon/nano-input)
 
 lit-element input
 
