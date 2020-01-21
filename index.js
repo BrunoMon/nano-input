@@ -16,6 +16,7 @@ export class nanoInput extends LitElement {
         this.errorText = ""
         this.isValid = true
         this.leadingIcon = null
+        this.noSpinner = false
         this.addEventListener("click", (e) => {
             this.focus()
         })
@@ -154,6 +155,15 @@ export class nanoInput extends LitElement {
         :host([is-valid]) #error{
             display:none
         }
+        :host([no-spinner]) input::-webkit-outer-spin-button,
+        :host([no-spinner]) input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        :host([no-spinner]) input[type=number] {
+            -moz-appearance:textfield;
+        }
 
         :host([type="checkbox"]) #input{
             opacity:0;
@@ -250,6 +260,11 @@ export class nanoInput extends LitElement {
             disabled: {
                 type: Boolean,
                 reflect: true
+            },
+            noSpinner: {
+                type: Boolean,
+                reflect: true,
+                attribute: "no-spinner",
             }
         }
 
