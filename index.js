@@ -199,7 +199,7 @@ export class nanoInput extends LitElement {
                 ${this.leadingIcon}
             </div>
             <div id="container">
-                <input id="input" .value="${this.value}" spellcheck="false" autocomplete="off" type="${this.type}" ?readonly=${this.readonly} ?disabled=${this.disabled} @change="${(e)=> this.value=e.currentTarget.value}" @blur="${this.blur}">
+                <input id="input" .value="${this.value}" ?checked="${this.value}" spellcheck="false" autocomplete="off" type="${this.type}" ?readonly=${this.readonly} ?disabled=${this.disabled} @change="${this.cambio}" @blur="${this.blur}">
                 <label for="input">
                     <div id="label">${this.label}</div>
                     <div id="border"></div>
@@ -287,10 +287,15 @@ export class nanoInput extends LitElement {
     get errorText() {
         return this._errorText
     }
+
+    cambio(e) {
+        this.value = this.type != "checkbox" ? e.currentTarget.value : e.currentTarget.checked
+    }
+
     set value(value) {
         const oldValue = this._value;
         this._value = value
-        this.empty = (this._value == "")
+        if (this.type != "checkbox") this.empty = (this._value == "")
         this.requestUpdate('value', oldValue);
         const ev = new Event("validating")
         this.dispatchEvent(ev)
