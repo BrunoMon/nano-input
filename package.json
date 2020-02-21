@@ -1,6 +1,6 @@
 {
     "name": "@brunomon/nano-input",
-    "version": "2.1.0",
+    "version": "2.1.2",
     "description": "input based on lit-element",
     "license": "MIT",
     "repository": "brunomon/nano-input",

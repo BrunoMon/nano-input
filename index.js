@@ -199,7 +199,7 @@ export class nanoInput extends LitElement {
                 ${this.leadingIcon}
             </div>
             <div id="container">
-                <input id="input" .value="${this.value}" ?checked="${this.value}" spellcheck="false" autocomplete="off" type="${this.type}" ?readonly=${this.readonly} ?disabled=${this.disabled} @change="${this.cambio}" @blur="${this.blur}">
+                <input id="input" .value="${this.value}" .checked="${this.checked}" spellcheck="false" autocomplete="off" type="${this.type}" ?readonly=${this.readonly} ?disabled=${this.disabled} @change="${this.cambio}" @blur="${this.blur}">
                 <label for="input">
                     <div id="label">${this.label}</div>
                     <div id="border"></div>
@@ -265,6 +265,10 @@ export class nanoInput extends LitElement {
                 type: Boolean,
                 reflect: true,
                 attribute: "no-spinner",
+            },
+            checked: {
+                type: Boolean,
+                reflect: true
             }
         }
 
@@ -289,7 +293,14 @@ export class nanoInput extends LitElement {
     }
 
     cambio(e) {
-        this.value = this.type != "checkbox" ? e.currentTarget.value : e.currentTarget.checked
+        if (this.type != "checkbox") {
+            this.value = e.currentTarget.value
+        } else {
+            this.checked = e.currentTarget.checked
+            const ev = new Event("validating")
+            this.dispatchEvent(ev)
+        }
+        //this.value = this.type != "checkbox" ? e.currentTarget.value : e.currentTarget.checked
     }
 
     set value(value) {
