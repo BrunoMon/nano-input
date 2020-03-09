@@ -126,7 +126,7 @@ export class nanoInput extends LitElement {
             width:0;
             height:auto;
             z-index:2;
-            bottom:0;
+            top:100%;
             transition:all .3s ease;
             border-bottom:2px solid var(--primary-color);
         }
